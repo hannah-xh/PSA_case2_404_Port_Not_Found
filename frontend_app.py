@@ -7,7 +7,7 @@ from evaluation_system import EvaluationSystem
 from llm_client import LLMClient
 
 st.set_page_config(
-    page_title="PSA Intelligent Assistant",
+    page_title="PRAXIS",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -28,7 +28,7 @@ if 'messages' not in st.session_state:
 if 'data_cache' not in st.session_state:
     st.session_state.data_cache = None
 
-st.title("PSA Intelligent Assistant")
+st.title("PRAXIS")
 st.caption("AI-Powered Global Insights Dashboard")
 
 with st.sidebar:
