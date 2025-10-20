@@ -1,0 +1,49 @@
+2025-10-20 12:49:11,825 - INFO - ============================================================
+2025-10-20 12:49:11,825 - INFO - PRAXIS - Where Thought Becomes Action
+2025-10-20 12:49:11,825 - INFO - Team: 404 Port Not Found
+2025-10-20 12:49:11,826 - INFO - ============================================================
+2025-10-20 12:49:11,826 - INFO - Starting job planning process
+2025-10-20 12:49:11,826 - INFO - Fetching vessel data from Power BI
+2025-10-20 12:49:13,395 - INFO - Retrieved 300 vessel records in 1.57s
+2025-10-20 12:49:13,395 - INFO - Running decision engine analysis
+2025-10-20 12:49:13,406 - INFO - Analysis completed in 0.01s
+2025-10-20 12:49:13,407 - INFO - Average DIS Score: 49.56
+2025-10-20 12:49:13,409 - INFO - Average Time Efficiency: 70.21
+2025-10-20 12:49:13,409 - INFO - Average Cost Efficiency: 26.41
+2025-10-20 12:49:13,410 - INFO - Identifying top priorities
+2025-10-20 12:49:13,411 - INFO - Top priority vessels identified: 20
+2025-10-20 12:49:13,412 - INFO - Generating AI recommendations
+2025-10-20 12:49:13,422 - INFO - Recommendations generated in 0.01s
+2025-10-20 12:49:13,422 - INFO -   Recommendation 1: 136 vessels with DIS < 50. Review operational efficiency.
+2025-10-20 12:49:13,423 - INFO -   Recommendation 2: Top environmental performers: DPT, AZQ, NVX
+2025-10-20 12:49:13,423 - INFO - Exporting results to data/output.csv
+2025-10-20 12:49:13,423 - INFO - Available columns: ['Operator', 'Service', 'Dir', 'BU', 'Vessel', 'IMO', 'Rotation No.', 'From', 'To', 'Berth Status', 'BTR as at 96h to ATB', 'Final BTR (Local Time)', 'ABT (Local Time)', 'ATB (Local Time)', 'ATU (Local Time)', 'Arrival Variance (within 4h target)', 'Arrival Accuracy (Final BTR)', 'Wait Time (Hours): ATB-BTR', 'Wait Time (Hours): ABT-BTR', 'Wait Time (hours): ATB-ABT', 'Berth Time (hours): ATU - ATB', 'Assured Port Time Achieved (%)', 'Bunker Saved (USD)', 'Carbon Abatement (Tonnes)', 'Year', 'Month', 'DIS_Score', 'Time_Efficiency', 'Cost_Efficiency', 'Environmental_Score', 'Risk_Score']
+2025-10-20 12:49:13,428 - INFO - Exported 300 records to data/output.csv
+2025-10-20 12:49:13,428 - INFO - Columns included: 13 columns
+2025-10-20 12:49:13,428 - INFO - ============================================================
+2025-10-20 12:49:13,428 - INFO - PERFORMANCE COMPARISON: AI vs MANUAL
+2025-10-20 12:49:13,429 - INFO - ============================================================
+2025-10-20 12:49:13,429 - INFO - AI Processing Time: 1.59 seconds
+2025-10-20 12:49:13,429 - INFO -   - Data Fetch: 1.57s
+2025-10-20 12:49:13,430 - INFO -   - Analysis: 0.01s
+2025-10-20 12:49:13,430 - INFO -   - Recommendations: 0.01s
+2025-10-20 12:49:13,430 - INFO - 
+2025-10-20 12:49:13,430 - INFO - Manual Processing Time (estimated): 300 seconds
+2025-10-20 12:49:13,430 - INFO -   - Manual dashboard navigation: ~60s
+2025-10-20 12:49:13,430 - INFO -   - Data interpretation: ~120s
+2025-10-20 12:49:13,430 - INFO -   - Decision making: ~120s
+2025-10-20 12:49:13,431 - INFO - 
+2025-10-20 12:49:13,431 - INFO - SPEEDUP: 188.7x faster
+2025-10-20 12:49:13,431 - INFO - TIME SAVED: 298.4 seconds (5.0 minutes)
+2025-10-20 12:49:13,431 - INFO - 
+2025-10-20 12:49:13,431 - INFO - Session Performance Metrics:
+2025-10-20 12:49:13,432 - INFO -   - Total queries processed: 3
+2025-10-20 12:49:13,432 - INFO -   - Average response time: 0.53s
+2025-10-20 12:49:13,432 - INFO -   - Min response time: 0.01s
+2025-10-20 12:49:13,432 - INFO -   - Max response time: 1.57s
+2025-10-20 12:49:13,432 - INFO - ============================================================
+2025-10-20 12:49:13,432 - INFO - ============================================================
+2025-10-20 12:49:13,433 - INFO - PRAXIS job planning completed successfully
+2025-10-20 12:49:13,433 - INFO - Output saved to: data/output.csv
+2025-10-20 12:49:13,433 - INFO - Log saved to: logs/job_planner_20251020_124911.log
+2025-10-20 12:49:13,433 - INFO - ============================================================
