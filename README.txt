@@ -1,4 +1,4 @@
-PRAXIS - PSA INTELLIGENT CONVERSATION ASSISTANT
+# PRAXIS - PSA INTELLIGENT CONVERSATION ASSISTANT
 Where Thought Becomes Action
 
 From the Greek πρᾶξις, meaning the passage from understanding to doing.
@@ -9,7 +9,7 @@ Code Submission - Problem Statement 2
 Team: 404 Port Not Found
 
 
-PROJECT OVERVIEW
+# PROJECT OVERVIEW
 
 PRAXIS is an AI-powered conversational assistant for PSA's Global Insights 
 Dashboard. The system uses Azure OpenAI to interpret vessel operations data 
@@ -19,11 +19,12 @@ clarity and supporting decisions with intent.
 Key Achievement: 142x faster than manual analysis (2.1s vs 300s)
 
 
-SYSTEM ARCHITECTURE
+# SYSTEM ARCHITECTURE
 
 The solution consists of modular Python components:
 
-Main Entry Point:
+## Main Entry Point
+
 job_planner.py (MODIFIED)
 - Orchestrates all system components
 - Fetches data via powerbi_connector
@@ -32,7 +33,8 @@ job_planner.py (MODIFIED)
 - Tracks performance metrics via evaluation_system
 - Outputs results to data/output.csv with performance logs
 
-Supporting Modules:
+## Supporting Modules
+
 - powerbi_connector.py: Power BI data access via Service Principal
 - decision_engine.py: DIS score calculation and performance analysis
 - llm_client.py: Azure OpenAI GPT-4.1-nano integration
@@ -42,13 +44,14 @@ Supporting Modules:
 - frontend_app.py: Streamlit web interface
 - test_system.py: System validation and testing
 
-Integration Approach:
+## Integration Approach
+
 job_planner.py imports and utilizes functions from existing modules rather 
 than duplicating code. This modular approach ensures maintainability and 
 follows software engineering best practices.
 
 
-SYSTEM REQUIREMENTS
+# SYSTEM REQUIREMENTS
 
 - Python 3.9 or higher
 - Internet connection for Azure OpenAI API
@@ -57,7 +60,7 @@ SYSTEM REQUIREMENTS
 - Virtual environment recommended
 
 
-INSTALLATION
+# INSTALLATION
 
 1. Extract all files to your working directory
 
@@ -91,13 +94,13 @@ INSTALLATION
    README.txt
 
 
-RUNNING THE SYSTEM
+# RUNNING THE SYSTEM
 
 Important: Always activate virtual environment before running.
 Windows: .venv\Scripts\activate
 Mac/Linux: source .venv/bin/activate
 
-Option 1: Generate Simulation Results (Primary Method)
+## Option 1: Generate Simulation Results (Primary Method)
 
 python job_planner.py
 
@@ -115,7 +118,7 @@ Expected output:
 
 Typical execution time: 2-3 seconds
 
-Option 2: Run Interactive Web Interface
+## Option 2: Run Interactive Web Interface
 
 streamlit run frontend_app.py
 
@@ -127,36 +130,40 @@ Features:
 - Interactive performance metrics
 - Strategy selection
 
-Option 3: Run System Tests
+## Option 3: Run System Tests
 
 python test_system.py
 
 Validates Power BI authentication, decision engine, and LLM connectivity.
 
 
-CONFIGURATION
+# CONFIGURATION
 
-Power BI Settings (in config.py):
+## Power BI Settings (in config.py)
+
 - Authentication: Service Principal
 - Client ID: d4513e50-29a7-4f57-a41f-68fae5006b67
 - Workspace ID: 41675240-7b6e-4163-a0ed-52b5c3b13e01
 - Report ID: 06bdda3d-459c-4632-8784-d43e6b208aab
 
-Azure OpenAI Settings:
+## Azure OpenAI Settings
+
 - Endpoint: https://psacodesprint2025.azure-api.net/
 - Deployment: gpt-4.1-nano
 - API Version: 2025-01-01-preview
 
-Decision Weights:
+## Decision Weights
+
 - Time Efficiency: 30%
 - Cost Efficiency: 30%
 - Environmental Impact: 20%
 - Risk Level: 20%
 
 
-OUTPUT FILES
+# OUTPUT FILES
 
-data/output.csv
+## data/output.csv
+
 Analyzed vessel data with columns:
 - Operator, Vessel, BU
 - DIS_Score (Decision Intelligence Score 0-100)
@@ -165,7 +172,8 @@ Analyzed vessel data with columns:
 
 Sorted by DIS_Score (highest priority first)
 
-logs/job_planner_[timestamp].log
+## logs/job_planner_[timestamp].log
+
 Execution log containing:
 - Data fetch time and record count
 - Analysis metrics
@@ -174,9 +182,10 @@ Execution log containing:
 - Speedup factor and time saved
 
 
-KEY FEATURES
+# KEY FEATURES
 
-Decision Intelligence Score (DIS)
+## Decision Intelligence Score (DIS)
+
 Composite metric combining:
 - Time Efficiency: Wait time and arrival accuracy
 - Cost Efficiency: Bunker fuel savings
@@ -185,14 +194,16 @@ Composite metric combining:
 
 Configurable weights support different strategic priorities.
 
-AI-Powered Recommendations
+## AI-Powered Recommendations
+
 Azure OpenAI provides:
 - Vessel attention priorities
 - Operator performance insights
 - Environmental optimization opportunities
 - Actionable next steps
 
-Performance Optimization
+## Performance Optimization
+
 Manual Process: ~300 seconds
 - Dashboard navigation: 60s
 - Data interpretation: 120s
@@ -205,29 +216,30 @@ AI Process: ~2.1 seconds
 
 Result: 142x speedup
 
-Multi-Strategy Support
+## Multi-Strategy Support
+
 - Balanced: Equal weighting
 - Carbon Reduction: Emphasizes environmental impact (40%)
 - Cost Efficiency: Prioritizes bunker savings (40%)
 - Reliability: Focuses on on-time performance (40%)
 
 
-TROUBLESHOOTING
+# TROUBLESHOOTING
 
-ModuleNotFoundError
+## ModuleNotFoundError
 Activate virtual environment and run: pip install -r requirements.txt
 
-Power BI authentication failed
+## Power BI authentication failed
 Verify credentials in config.py and check internet connection
 
-Empty data returned
+## Empty data returned
 Confirm Power BI workspace access and dataset availability
 
-Streamlit won't start
+## Streamlit won't start
 Use custom port: streamlit run frontend_app.py --server.port 8502
 
 
-PERFORMANCE METRICS
+# PERFORMANCE METRICS
 
 Based on simulation results in logs/:
 - Average processing time: 2.1 seconds
@@ -238,7 +250,7 @@ Based on simulation results in logs/:
 - Time saved per query: 4.9 minutes
 
 
-TECHNICAL DETAILS
+# TECHNICAL DETAILS
 
 - Language: Python 3.9+
 - Frontend: Streamlit 1.28.0
@@ -248,7 +260,7 @@ TECHNICAL DETAILS
 - Analysis: Custom Decision Intelligence Score algorithm
 
 
-PRAXIS PHILOSOPHY
+# PRAXIS PHILOSOPHY
 
 PRAXIS embodies the journey from data to decision:
 - Understanding: AI analyzes vessel operations data
@@ -258,13 +270,13 @@ PRAXIS embodies the journey from data to decision:
 This transforms passive dashboard viewing into active operational intelligence.
 
 
-CONTACT
+# CONTACT
 
 For questions about this submission, contact Team 404 Port Not Found through
 the hackathon platform.
 
 
-ACKNOWLEDGMENTS
+# ACKNOWLEDGMENTS
 
 PRAXIS was developed by Team 404 Port Not Found for the PSA Code Sprint 2025 
 Hackathon. Special thanks to PSA International for providing the challenge 
