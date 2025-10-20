@@ -69,16 +69,38 @@ class PowerBIConnector:
         if response.status_code == 200:
             data = response.json()
             rows = data["results"][0]["tables"][0]["rows"]
-            return pd.DataFrame(rows)
+            df = pd.DataFrame(rows)
+            
+            df.columns = [col.replace('data[', '').replace(']', '') for col in df.columns]
+            return df
         else:
             raise Exception(f"Query failed: {response.text}")
     
-    def get_all_data(self) -> pd.DataFrame:
-        query = "EVALUATE 'Data'"
+    def get_operator_data(self, operator: Optional[str] = None) -> pd.DataFrame:
+        if operator:
+            query = f"EVALUATE FILTER('Data', 'Data'[Operator] = \"{operator}\")"
+        else:
+            query = "EVALUATE 'Data'"
+        
         return self.execute_dax_query(query)
     
-    def get_operator_data(self, operators: Optional[List[str]] = None) -> pd.DataFrame:
+    def get_key_metrics(self) -> Dict[str, float]:
         query = """
+        EVALUATE 
+        SUMMARIZE(
+            'Data',
+            "AvgWaitTime", AVERAGE('Data'[Wait Time (Hours): ATB-BTR]),
+            "TotalBunkerSaved", SUM('Data'[Bunker Saved (USD)]),
+            "TotalCarbonAbatement", SUM('Data'[Carbon Abatement (Tonnes)]),
+            "AvgArrivalVariance", AVERAGE('Data'[Arrival Variance (within 4h target)])
+        )
+        """
+        
+        df = self.execute_dax_query(query)
+        return df.iloc[0].to_dict()
+    
+    def get_operators_comparison(self, operators: List[str]) -> pd.DataFrame:
+        query = f"""
         EVALUATE 
         SUMMARIZECOLUMNS(
             'Data'[Operator],
@@ -89,43 +111,4 @@ class PowerBIConnector:
         """
         
         df = self.execute_dax_query(query)
-        if operators:
-            df = df[df['Operator'].isin(operators)]
-        return df
-    
-    def get_port_performance(self, port: Optional[str] = None) -> pd.DataFrame:
-        query = """
-        EVALUATE 
-        SUMMARIZECOLUMNS(
-            'Data'[To],
-            "AvgWaitTime", AVERAGE('Data'[Wait Time (Hours): ATB-BTR]),
-            "TotalBunkerSaved", SUM('Data'[Bunker Saved (USD)]),
-            "TotalCarbon", SUM('Data'[Carbon Abatement (Tonnes)]),
-            "VesselCount", COUNTROWS('Data')
-        )
-        """
-        
-        df = self.execute_dax_query(query)
-        if port:
-            df = df[df['To'] == port]
-        return df
-    
-    def get_filtered_data(self, filters: Dict[str, any]) -> pd.DataFrame:
-        conditions = []
-        for column, value in filters.items():
-            if isinstance(value, str):
-                conditions.append(f"'Data'[{column}] = \"{value}\"")
-            else:
-                conditions.append(f"'Data'[{column}] = {value}")
-        
-        filter_clause = " && ".join(conditions) if conditions else "TRUE()"
-        
-        query = f"""
-        EVALUATE 
-        FILTER(
-            'Data',
-            {filter_clause}
-        )
-        """
-        
-        return self.execute_dax_query(query)
+        return df[df['Operator'].isin(operators)]
